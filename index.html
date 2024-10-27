@@ -5,93 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HomeRadar - Real Estate Platform</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- Add this in your <head> section -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMD2j9S2q20TzW4cQpF7ZBZpGpM5G4jwl7b1D" crossorigin="anonymous">
 
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
-<body class="font-sans bg-gray-100">
+<body class="bg-gray-100 font-sans">
 
-  <header class="flex items-center justify-between p-4 bg-white border-b border-gray-200">
-    <!-- Left Section: Logo and Search -->
-    <div class="flex items-center space-x-4">
-        <img src="logo.jpg" alt="HomeRadar Logo" class="h-8"> <!-- Replace with your logo -->
-        <input type="text" placeholder="Search..." class="w-80 px-4 py-1 rounded-full border border-gray-300 text-sm focus:outline-none"> <!-- Increased width -->
+<header class="bg-white shadow-md p-4">
+    <div class="container mx-auto flex items-center justify-between">
+        <!-- Left Section: Logo and Search Bar -->
+        <div class="flex items-center space-x-4">
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-2">
+                <img src="logo.jpg" alt="Logo" class="h-8"> <!-- Replace with your logo -->
+                
+            </a>
+
+            <!-- Search Bar (Visible only on desktop) -->
+            <div class="hidden lg:flex items-center bg-gray-100 px-4 py-1 rounded-full">
+                <i class="bi bi-search text-gray-400"></i>
+                <input type="text" placeholder="Search..." class="bg-transparent focus:outline-none w-64 pl-2 text-sm">
+            </div>
+        </div>
+
+        <!-- Center Section: Navigation Links -->
+        <nav class="hidden lg:flex space-x-6 text-gray-700 font-medium">
+            <div class="relative group">
+                <a href="#" class="hover:text-blue-600">Home</a>
+                <div class="absolute hidden group-hover:block mt-2 bg-white shadow-lg rounded-lg py-2">
+                    <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Home 1</a>
+                    <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Home 2</a>
+                </div>
+            </div>
+            <div class="relative group">
+                <a href="#" class="hover:text-blue-600">Listings</a>
+                <div class="absolute hidden group-hover:block mt-2 bg-white shadow-lg rounded-lg py-2">
+                    <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Listings 1</a>
+                    <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Listings 2</a>
+                </div>
+            </div>
+            <a href="#" class="hover:text-blue-600">Agents</a>
+            <a href="#" class="hover:text-blue-600">News</a>
+            <a href="#" class="hover:text-blue-600">Pages</a>
+        </nav>
+
+        <!-- Right Section: User Controls -->
+        <div class="flex items-center space-x-4">
+            <!-- Sign In -->
+            <a href="#" class="text-gray-700 hover:text-blue-600 hidden lg:block">Sign In</a>
+
+            <!-- Notification Icon with Badge -->
+            <div class="relative">
+                <i class="bi bi-bell text-xl text-gray-700 hover:text-blue-600"></i>
+                <span class="absolute -top-1 -right-2 bg-blue-500 text-white text-xs rounded-full px-1.5">5</span>
+            </div>
+
+            <!-- Language Dropdown -->
+            <div class="relative group">
+                <i class="bi bi-globe text-xl text-gray-700 hover:text-blue-600"></i>
+                <div class="absolute hidden group-hover:block mt-2 bg-white shadow-lg rounded-lg py-2">
+                    <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">English</a>
+                    <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Spanish</a>
+                </div>
+            </div>
+
+            <!-- Add Listing Button -->
+            <button class="hidden lg:inline-block bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700">+ Add Listing</button>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-toggle" class="lg:hidden text-gray-700 focus:outline-none">
+                <i class="bi bi-list text-2xl"></i>
+            </button>
+        </div>
     </div>
 
-    <!-- Center Section: Navigation Links with Dropdowns -->
-    <nav class="flex items-center space-x-6">
-        <!-- Home Dropdown -->
-        <div class="relative group">
-            <a href="#" class="text-gray-700 hover:text-blue-500 text-sm">Home</a>
-            <div class="absolute left-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg hidden group-hover:block">
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home 1</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home 2</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home 3</a>
-            </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="lg:hidden hidden mt-4">
+        <div class="space-y-2 text-gray-700">
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Home</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Listings</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Agents</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100">News</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Pages</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Sign In</a>
+            <button class="w-full bg-blue-600 text-white py-2 rounded-full mt-4">+ Add Listing</button>
         </div>
-
-        <!-- Add Dropdown for H1, H2, H3, H4 -->
-        <div class="relative group">
-            <a href="#" class="text-gray-700 hover:text-blue-500 text-sm">Add</a>
-            <div class="absolute left-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg hidden group-hover:block">
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">H1</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">H2</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">H3</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">H4</a>
-            </div>
-        </div>
-
-        <!-- Listings, Agents, News, and Pages dropdowns as per previous setup -->
-        <!-- Listings Dropdown -->
-        <div class="relative group">
-            <a href="#" class="text-gray-700 hover:text-blue-500 text-sm">Listings</a>
-            <div class="absolute left-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg hidden group-hover:block">
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Listings 1</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Listings 2</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Listings 3</a>
-            </div>
-        </div>
-
-        <!-- Agents Dropdown -->
-        <div class="relative group">
-            <a href="#" class="text-gray-700 hover:text-blue-500 text-sm">Agents</a>
-            <div class="absolute left-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg hidden group-hover:block">
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Agent 1</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Agent 2</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Agent 3</a>
-            </div>
-        </div>
-
-        <!-- News Dropdown -->
-        <div class="relative group">
-            <a href="#" class="text-gray-700 hover:text-blue-500 text-sm">News</a>
-            <div class="absolute left-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg hidden group-hover:block">
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">News 1</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">News 2</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">News 3</a>
-            </div>
-        </div>
-
-        <!-- Pages Dropdown -->
-        <div class="relative group">
-            <a href="#" class="text-gray-700 hover:text-blue-500 text-sm">Pages</a>
-            <div class="absolute left-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg hidden group-hover:block">
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Page 1</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Page 2</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Page 3</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Right Section: User Controls -->
-    <div class="flex items-center space-x-4">
-        <a href="#" class="text-gray-700 hover:text-blue-500 text-sm">Sign In</a>
-        <a href="#" class="text-gray-700 hover:text-blue-500 text-xl">🔔</a>
-        <a href="#" class="text-gray-700 hover:text-blue-500 text-xl">🌐</a>
-        <button class="px-4 py-1 bg-blue-500 text-white rounded-full text-sm hover:bg-blue-600">+ Add Listing</button>
     </div>
 </header>
 
+<script>
+    // Mobile menu toggle functionality
+    document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+</script>
     <!-- Hero Section -->
 <section class="relative bg-gray-100 py-16 lg:py-32">
   <!-- Background and Overlay -->
@@ -141,103 +149,22 @@
     </nav>
   </div>
 </section>
-    <!-- Latest Properties Section -->
-    <section class="py-12 px-8 bg-gray-50">
-        <h2 class="text-3xl font-bold text-center mb-4">Browse Hot Offers</h2>
-        <h3 class="text-xl text-center mb-8 text-gray-700">Latest Properties</h3>
-        <div class="flex justify-center space-x-4 mb-8">
-            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">All Categories</button>
-            <button class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-blue-600 hover:text-white">For Sale</button>
-            <button class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-blue-600 hover:text-white">For Rent</button>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Property Card 1 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <div class="relative">
-                    <img src="pic1.jpg" alt="Gorgeous House For Sale" class="w-full h-48 object-cover">
-                    <div class="absolute top-2 left-2 flex space-x-2">
-                        <span class="bg-blue-600 text-white text-xs px-2 py-1 rounded-md">Sale</span>
-                        <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded-md">Apartment</span>
-                    </div>
-                    <div class="absolute top-2 right-2 text-white cursor-pointer">♡</div>
-                    <div class="absolute bottom-2 left-2 text-white">👁️ 8</div>
-                </div>
-                <div class="p-4">
-                    <p class="text-gray-500">70 Bright St, New York, USA</p>
-                    <h4 class="font-bold text-lg mt-2">Gorgeous House For Sale</h4>
-                    <p class="text-blue-600 font-semibold">$600,000</p>
-                    <p class="text-gray-600 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <div class="flex justify-between text-gray-700 mt-4">
-                        <span>3 Beds</span>
-                        <span>2 Baths</span>
-                        <span>450 ft²</span>
-                    </div>
-                    <div class="flex items-center mt-4">
-                        <img src="spic1.jpg" alt="Agent" class="w-8 h-8 rounded-full">
-                        <span class="ml-2">By Liza Rose</span>
-                        <span class="ml-2 text-yellow-500">★★★★☆</span>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-              <div class="relative">
-                  <img src="pic2.jpg" alt="Gorgeous House For Sale" class="w-full h-48 object-cover">
-                  <div class="absolute top-2 left-2 flex space-x-2">
-                      <span class="bg-blue-600 text-white text-xs px-2 py-1 rounded-md">Sale</span>
-                      <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded-md">Apartment</span>
-                  </div>
-                  <div class="absolute top-2 right-2 text-white cursor-pointer">♡</div>
-                  <div class="absolute bottom-2 left-2 text-white">👁️ 8</div>
-              </div>
-              <div class="p-4">
-                  <p class="text-gray-500">70 Bright St, New York, USA</p>
-                  <h4 class="font-bold text-lg mt-2">Gorgeous House For Sale</h4>
-                  <p class="text-blue-600 font-semibold">$600,000</p>
-                  <p class="text-gray-600 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                  <div class="flex justify-between text-gray-700 mt-4">
-                      <span>3 Beds</span>
-                      <span>2 Baths</span>
-                      <span>450 ft²</span>
-                  </div>
-                  <div class="flex items-center mt-4">
-                      <img src="spic2.jpg" alt="Agent" class="w-8 h-8 rounded-full">
-                      <span class="ml-2">By Liza Rose</span>
-                      <span class="ml-2 text-yellow-500">★★★★☆</span>
-                  </div>
-              </div>
-          </div>
-          <div class="bg-white rounded-lg shadow-md overflow-hidden">
-            <div class="relative">
-                <img src="pic3.jpg" alt="Gorgeous House For Sale" class="w-full h-48 object-cover">
-                <div class="absolute top-2 left-2 flex space-x-2">
-                    <span class="bg-blue-600 text-white text-xs px-2 py-1 rounded-md">Sale</span>
-                    <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded-md">Apartment</span>
-                </div>
-                <div class="absolute top-2 right-2 text-white cursor-pointer">♡</div>
-                <div class="absolute bottom-2 left-2 text-white">👁️ 8</div>
-            </div>
-            <div class="p-4">
-                <p class="text-gray-500">70 Bright St, New York, USA</p>
-                <h4 class="font-bold text-lg mt-2">Gorgeous House For Sale</h4>
-                <p class="text-blue-600 font-semibold">$600,000</p>
-                <p class="text-gray-600 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <div class="flex justify-between text-gray-700 mt-4">
-                    <span>3 Beds</span>
-                    <span>2 Baths</span>
-                    <span>450 ft²</span>
-                </div>
-                <div class="flex items-center mt-4">
-                    <img src="spic3.jpg" alt="Agent" class="w-8 h-8 rounded-full">
-                    <span class="ml-2">By Liza Rose</span>
-                    <span class="ml-2 text-yellow-500">★★★★☆</span>
-                </div>
-            </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+   <!-- Latest Properties Section --> 
+<section class="py-12 px-4 lg:px-8 bg-gray-50">
+  <h2 class="text-3xl font-bold text-center mb-4">Browse Hot Offers</h2>
+  <h3 class="text-xl text-center mb-8 text-gray-700">Latest Properties</h3>
+  <div class="flex flex-wrap justify-center gap-2 mb-8">
+      <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">All Categories</button>
+      <button class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-blue-600 hover:text-white">For Sale</button>
+      <button class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-blue-600 hover:text-white">For Rent</button>
+  </div>
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      <!-- Property Card 1 -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
           <div class="relative">
-              <img src="pic4.jpg" alt="Gorgeous House For Sale" class="w-full h-48 object-cover">
-              <div class="absolute top-2 left-2 flex space-x-2">
+              <img src="pic1.jpg" alt="Gorgeous House For Sale" class="w-full h-48 sm:h-52 object-cover">
+              <div class="absolute top-2 left-2 flex space-x-1">
                   <span class="bg-blue-600 text-white text-xs px-2 py-1 rounded-md">Sale</span>
                   <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded-md">Apartment</span>
               </div>
@@ -245,81 +172,85 @@
               <div class="absolute bottom-2 left-2 text-white">👁️ 8</div>
           </div>
           <div class="p-4">
-              <p class="text-gray-500">70 Bright St, New York, USA</p>
+              <p class="text-gray-500 text-sm">70 Bright St, New York, USA</p>
               <h4 class="font-bold text-lg mt-2">Gorgeous House For Sale</h4>
               <p class="text-blue-600 font-semibold">$600,000</p>
               <p class="text-gray-600 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              <div class="flex justify-between text-gray-700 mt-4">
+              <div class="flex justify-between text-gray-700 mt-4 text-sm">
                   <span>3 Beds</span>
                   <span>2 Baths</span>
                   <span>450 ft²</span>
               </div>
               <div class="flex items-center mt-4">
-                  <img src="spic4.jpg" alt="Agent" class="w-8 h-8 rounded-full">
-                  <span class="ml-2">By Liza Rose</span>
+                  <img src="spic1.jpg" alt="Agent" class="w-8 h-8 rounded-full">
+                  <span class="ml-2 text-sm">By Liza Rose</span>
                   <span class="ml-2 text-yellow-500">★★★★☆</span>
               </div>
           </div>
       </div>
+      
+      <!-- Property Card 2 -->
       <div class="bg-white rounded-lg shadow-md overflow-hidden">
-        <div class="relative">
-            <img src="pic5.jpg" alt="Gorgeous House For Sale" class="w-full h-48 object-cover">
-            <div class="absolute top-2 left-2 flex space-x-2">
-                <span class="bg-blue-600 text-white text-xs px-2 py-1 rounded-md">Sale</span>
-                <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded-md">Apartment</span>
-            </div>
-            <div class="absolute top-2 right-2 text-white cursor-pointer">♡</div>
-            <div class="absolute bottom-2 left-2 text-white">👁️ 8</div>
-        </div>
-        <div class="p-4">
-            <p class="text-gray-500">70 Bright St, New York, USA</p>
-            <h4 class="font-bold text-lg mt-2">Gorgeous House For Sale</h4>
-            <p class="text-blue-600 font-semibold">$600,000</p>
-            <p class="text-gray-600 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <div class="flex justify-between text-gray-700 mt-4">
-                <span>3 Beds</span>
-                <span>2 Baths</span>
-                <span>450 ft²</span>
-            </div>
-            <div class="flex items-center mt-4">
-                <img src="spic1.jpg" alt="Agent" class="w-8 h-8 rounded-full">
-                <span class="ml-2">By Liza Rose</span>
-                <span class="ml-2 text-yellow-500">★★★★☆</span>
-            </div>
-        </div>
-    </div>
-    <div class="bg-white rounded-lg shadow-md overflow-hidden">
-      <div class="relative">
-          <img src="pic6.jpg" alt="Gorgeous House For Sale" class="w-full h-48 object-cover">
-          <div class="absolute top-2 left-2 flex space-x-2">
-              <span class="bg-blue-600 text-white text-xs px-2 py-1 rounded-md">Sale</span>
-              <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded-md">Apartment</span>
+          <div class="relative">
+              <img src="pic2.jpg" alt="Gorgeous House For Sale" class="w-full h-48 sm:h-52 object-cover">
+              <div class="absolute top-2 left-2 flex space-x-1">
+                  <span class="bg-blue-600 text-white text-xs px-2 py-1 rounded-md">Sale</span>
+                  <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded-md">Apartment</span>
+              </div>
+              <div class="absolute top-2 right-2 text-white cursor-pointer">♡</div>
+              <div class="absolute bottom-2 left-2 text-white">👁️ 8</div>
           </div>
-          <div class="absolute top-2 right-2 text-white cursor-pointer">♡</div>
-          <div class="absolute bottom-2 left-2 text-white">👁️ 8</div>
-      </div>
-      <div class="p-4">
-          <p class="text-gray-500">70 Bright St, New York, USA</p>
-          <h4 class="font-bold text-lg mt-2">Gorgeous House For Sale</h4>
-          <p class="text-blue-600 font-semibold">$600,000</p>
-          <p class="text-gray-600 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <div class="flex justify-between text-gray-700 mt-4">
-              <span>3 Beds</span>
-              <span>2 Baths</span>
-              <span>450 ft²</span>
-          </div>
-          <div class="flex items-center mt-4">
-              <img src="spic1.jpg" alt="Agent" class="w-8 h-8 rounded-full">
-              <span class="ml-2">By Liza Rose</span>
-              <span class="ml-2 text-yellow-500">★★★★☆</span>
+          <div class="p-4">
+              <p class="text-gray-500 text-sm">70 Bright St, New York, USA</p>
+              <h4 class="font-bold text-lg mt-2">Gorgeous House For Sale</h4>
+              <p class="text-blue-600 font-semibold">$600,000</p>
+              <p class="text-gray-600 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <div class="flex justify-between text-gray-700 mt-4 text-sm">
+                  <span>3 Beds</span>
+                  <span>2 Baths</span>
+                  <span>450 ft²</span>
+              </div>
+              <div class="flex items-center mt-4">
+                  <img src="spic2.jpg" alt="Agent" class="w-8 h-8 rounded-full">
+                  <span class="ml-2 text-sm">By Liza Rose</span>
+                  <span class="ml-2 text-yellow-500">★★★★☆</span>
+              </div>
           </div>
       </div>
+
+      <!-- Property Card 3 -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="relative">
+              <img src="pic3.jpg" alt="Gorgeous House For Sale" class="w-full h-48 sm:h-52 object-cover">
+              <div class="absolute top-2 left-2 flex space-x-1">
+                  <span class="bg-blue-600 text-white text-xs px-2 py-1 rounded-md">Sale</span>
+                  <span class="bg-gray-600 text-white text-xs px-2 py-1 rounded-md">Apartment</span>
+              </div>
+              <div class="absolute top-2 right-2 text-white cursor-pointer">♡</div>
+              <div class="absolute bottom-2 left-2 text-white">👁️ 8</div>
+          </div>
+          <div class="p-4">
+              <p class="text-gray-500 text-sm">70 Bright St, New York, USA</p>
+              <h4 class="font-bold text-lg mt-2">Gorgeous House For Sale</h4>
+              <p class="text-blue-600 font-semibold">$600,000</p>
+              <p class="text-gray-600 text-sm mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <div class="flex justify-between text-gray-700 mt-4 text-sm">
+                  <span>3 Beds</span>
+                  <span>2 Baths</span>
+                  <span>450 ft²</span>
+              </div>
+              <div class="flex items-center mt-4">
+                  <img src="spic3.jpg" alt="Agent" class="w-8 h-8 rounded-full">
+                  <span class="ml-2 text-sm">By Liza Rose</span>
+                  <span class="ml-2 text-yellow-500">★★★★☆</span>
+              </div>
+          </div>
+      </div>
+
+      <!-- Additional Property Cards as needed, following the same structure as above -->
   </div>
+</section>
 
-            <!-- Repeat for additional property cards (similar to Property Card 1) -->
-
-        </div>
-    </section>
 
     <!-- Why Choose Our Properties Section -->
     <section class="py-12 bg-white">
